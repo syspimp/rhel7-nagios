@@ -1,5 +1,5 @@
 # ref https://access.redhat.com/solutions/1294053
-FROM ubi7:latest
+FROM registry.redhat.io/ubi7:latest
 WORKDIR /nagios/
 COPY start.sh /nagios/
 RUN yum -y install   httpd php  gd gd-devel gcc glibc glibc-common openssl perl perl-devel make
