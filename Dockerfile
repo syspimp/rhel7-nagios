@@ -4,6 +4,7 @@ FROM registry.access.redhat.com/ubi7/ubi:latest
 WORKDIR /nagios/
 COPY start.sh /nagios/
 RUN yum -y install   httpd php  gd gd-devel gcc glibc glibc-common openssl perl perl-devel make
+RUN useradd nagios && groupadd nagcmd && usermod -a -G nagcmd nagios
 RUN curl -L -O http://downloads.sourceforge.net/project/nagios/nagios-4.x/nagios-4.0.8/nagios-4.0.8.tar.gz && \
     tar zxf ./nagios-4.0.8.tar.gz && \
     cd nagios-4.0.8 && \
@@ -14,8 +15,7 @@ RUN curl -L -O http://downloads.sourceforge.net/project/nagios/nagios-4.x/nagios
     make install-config && \
     make install-commandmode && \
     make install-webconf
-RUN useradd nagios && groupadd nagcmd && usermod -a -G nagcmd nagios && \
-    htpasswd -b -c /usr/local/nagios/etc/htpasswd.users nagiosadmin redhat123 && \
+RUN htpasswd -b -c /usr/local/nagios/etc/htpasswd.users nagiosadmin redhat123 && \
     cp -rvf contrib/eventhandlers/ /usr/local/nagios/libexec/ && \
     chown -R nagios:nagios /usr/local/nagios/libexec/eventhandlers
 EXPOSE 80
