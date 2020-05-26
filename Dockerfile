@@ -44,9 +44,9 @@ RUN htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
 
 # Install Nagios plugins dependencies
 RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
-    yum --disablerepo=* --enablerepo=rhel-7-server-rpms install -y yum-utils
+    yum install -y yum-utils
 RUN yum install -y which gettext automake autoconf openssl-devel net-snmp net-snmp-utils
-RUN yum-config-manager repos --enable "rhel-7-server-optional-rpms" --enable "rhel-7-server-extras-rpms" && \
+RUN yum-config-manager repos --enable "*-optional-rpms" --enable "*-extras-rpms" && \
     yum install -y perl-Net-SNMP
 
 # Set working directory
