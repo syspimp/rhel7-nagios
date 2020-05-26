@@ -62,5 +62,6 @@ RUN ./configure
 RUN make
 RUN make install
 
+EXPOSE 80
 # Start Apache and Nagios
 CMD ["/bin/bash", "/nagios/start.sh"]
