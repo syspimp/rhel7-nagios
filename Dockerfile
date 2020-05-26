@@ -2,6 +2,7 @@
 FROM registry.access.redhat.com/ubi7/ubi:latest
 # Set the working directory
 WORKDIR /nagios/
+USER root
 
 # Copy into /nagios
 COPY . /nagios/
