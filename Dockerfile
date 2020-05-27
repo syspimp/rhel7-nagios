@@ -67,10 +67,10 @@ RUN make
 RUN make install
 
 # install the cli
-WORKDIR /nagios-api
+#WORKDIR /nagios-api
 #RUN ls /var/lib/nagios* && ls /var/cache/nagios*
-RUN git clone https://github.com/zorkian/nagios-api.git && \
-    easy_install nagios-api
+#RUN git clone https://github.com/zorkian/nagios-api.git && \
+#    easy_install nagios-api
 
 
 EXPOSE 80
