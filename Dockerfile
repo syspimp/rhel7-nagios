@@ -66,6 +66,15 @@ RUN ./configure
 RUN make
 RUN make install
 
+# install the cli
+WORKDIR /nagios-api
+RUN git clone https://github.com/zorkian/nagios-api.git && \
+    cd nagios-api && \
+    python setup.py
+
+RUN ls /var/lib/nagios* && ls /var/cache/nagios*
+
 EXPOSE 80
+EXPOSE 8080
 # Start Apache and Nagios
 CMD ["/bin/bash", "/nagios/start.sh"]
