@@ -7,7 +7,7 @@ USER root
 # Copy into /nagios
 COPY . /nagios/
 
-RUN yum -y install gcc glibc glibc-common wget unzip httpd php gd gd-devel perl postfix make
+RUN yum -y install gcc glibc glibc-common wget unzip httpd php gd gd-devel perl postfix make git
 
 # Download source
 RUN wget -O nagioscore.tar.gz https://github.com/NagiosEnterprises/nagioscore/archive/nagios-4.4.3.tar.gz
