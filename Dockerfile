@@ -68,7 +68,7 @@ RUN make install
 
 # install the cli
 WORKDIR /nagios-api
-RUN ls /var/lib/nagios* && ls /var/cache/nagios*
+#RUN ls /var/lib/nagios* && ls /var/cache/nagios*
 RUN git clone https://github.com/zorkian/nagios-api.git && \
     cd nagios-api && \
     python setup.py
